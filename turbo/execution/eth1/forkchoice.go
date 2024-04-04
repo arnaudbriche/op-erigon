@@ -76,7 +76,7 @@ func (e *EthereumExecutionModule) UpdateForkChoice(ctx context.Context, req *exe
 	// So we wait at most the amount specified by req.Timeout before just sending out
 	go e.updateForkChoice(ctx, blockHash, safeHash, finalizedHash, outcomeCh)
 
-	fcuTimer := time.NewTimer(time.Duration(req.Timeout) * time.Millisecond)
+	fcuTimer := time.NewTimer(10000 * time.Millisecond)
 
 	select {
 	case <-fcuTimer.C:
